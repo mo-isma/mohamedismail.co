@@ -129,17 +129,8 @@
     }
 
     /* ── Section focus dim ── */
-
-    header,
-    footer,
-    .section {
-      transition: opacity 0.4s ease;
-    }
-
-    body.section-open header,
-    body.section-open footer,
-    body.section-open .section:not(.open) {
-      opacity: 0.25;
+    header, footer, .section {
+      transition: opacity 0.5s ease;
     }
 
     /* ── Sections ── */
@@ -638,9 +629,11 @@
       });
       section.classList.remove('open');
       trigger.setAttribute('aria-expanded', 'false');
-      // Remove dim if no sections remain open
+      // Restore everything if no sections remain open
       if (!document.querySelector('.section.open')) {
-        document.body.classList.remove('section-open');
+        document.querySelectorAll('header, footer, .section').forEach(el => {
+          el.style.opacity = '';
+        });
       }
     }
 
@@ -661,7 +654,10 @@
       }, { once: true });
 
       // Dim everything except this section
-      document.body.classList.add('section-open');
+      const dimEls = [...document.querySelectorAll('header, footer, .section')];
+      dimEls.forEach(el => {
+        el.style.opacity = (el === section) ? '1' : '0.2';
+      });
 
       // Always scroll section header to top so content expands into view
       section.scrollIntoView({ behavior: 'smooth', block: 'start' });
