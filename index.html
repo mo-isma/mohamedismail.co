@@ -294,20 +294,40 @@
 
     .contact-links {
       display: flex;
-      gap: 32px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 20px;
     }
 
-    .contact-link {
-      display: inline-block; /* needed for magnetic translate transform */
+    .contact-cta {
+      display: inline-block;
       font-size: 3.5vw;
       letter-spacing: -1px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 3px;
-      transition: border-color 0.2s, color 0.3s;
+      color: var(--bg);
+      background: var(--text);
+      padding: 0.28em 0.6em 0.32em;
+      border-radius: 4px;
+      transition: opacity 0.2s;
+      align-self: flex-start;
     }
 
-    .contact-link:hover {
+    .contact-cta:hover {
+      opacity: 0.8;
+    }
+
+    .contact-email-line {
+      font-size: 1.6vw;
+      color: var(--muted);
+      letter-spacing: -0.2px;
+    }
+
+    .contact-email-line a {
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+
+    .contact-email-line a:hover {
       border-color: var(--text);
     }
 
@@ -469,7 +489,8 @@
         gap: 20px;
       }
 
-      .contact-link { font-size: 7vw; }
+      .contact-cta       { font-size: 7vw; }
+      .contact-email-line { font-size: 3.8vw; }
       .content-text { font-size: 4.5vw; }
       footer        { font-size: 3vw; }
 
@@ -566,8 +587,8 @@
       <div class="section-body" id="body-contact">
         <div class="section-content">
           <div class="contact-links">
-            <a class="contact-link" href="YOUR_TYPEFORM_URL" target="_blank" rel="noopener">Enquire</a>
-            <a class="contact-link" href="mailto:hello@mohamedismail.co">Email</a>
+            <a class="contact-cta" href="YOUR_TYPEFORM_URL" target="_blank" rel="noopener">Work with me →</a>
+            <span class="contact-email-line">or email <a href="mailto:hello@mohamedismail.co">hello@mohamedismail.co</a></span>
           </div>
         </div>
       </div>
