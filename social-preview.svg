@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#141414"/>
+  <!-- accent left bar -->
+  <rect x="0" y="0" width="6" height="630" fill="#e07850"/>
+  <!-- name -->
+  <text x="80" y="240" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="88" font-weight="400" fill="#f5f0e8" letter-spacing="-3">Mohamed Ismail</text>
+  <!-- role -->
+  <text x="80" y="316" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="52" font-weight="400" fill="rgba(245,240,232,0.4)" letter-spacing="-1">Marketing Consultant</text>
+  <!-- divider -->
+  <rect x="80" y="380" width="1040" height="1" fill="rgba(245,240,232,0.14)"/>
+  <!-- tagline -->
+  <text x="80" y="440" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" font-weight="400" fill="rgba(245,240,232,0.5)" letter-spacing="0">Research-backed strategy for business owners who want clarity, not committees.</text>
+  <!-- url -->
+  <text x="80" y="560" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="400" fill="rgba(245,240,232,0.3)" letter-spacing="0.5">mohamedismail.co</text>
+</svg>

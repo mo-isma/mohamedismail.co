@@ -10,6 +10,13 @@
   <meta property="og:title"       content="Mohamed Ismail — Marketing Consultant">
   <meta property="og:description" content="Research-backed marketing strategies that give your business a clear direction, a stronger brand, and a plan your team can run with.">
   <meta property="og:url"         content="https://mohamedismail.co">
+  <meta property="og:image"       content="https://mohamedismail.co/social-preview.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Mohamed Ismail — Marketing Consultant">
+  <meta name="twitter:description" content="Research-backed marketing strategies that give your business a clear direction, a stronger brand, and a plan your team can run with.">
+  <meta name="twitter:image"       content="https://mohamedismail.co/social-preview.png">
 
   <link rel="canonical" href="https://mohamedismail.co">
 
@@ -127,9 +134,9 @@
     }
 
     #theme-toggle svg {
-      width: 13px;
-      height: 13px;
-      opacity: 0.45;
+      width: 16px;
+      height: 16px;
+      opacity: 0.55; /* revert: change back to 0.45 to make more subtle */
       transition: opacity 0.3s;
     }
 
@@ -207,7 +214,7 @@
     }
 
     .section-content {
-      padding-bottom: 64px;
+      padding-bottom: 44px; /* revert: was 64px */
       opacity: 0;
       transition: opacity 0.4s ease;
     }
@@ -295,29 +302,39 @@
     .contact-links {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
     }
 
+    /* Typographic CTA — no box, fits the editorial language.
+       To revert to box button: restore background, padding, border-radius,
+       color: var(--bg), and remove border-bottom styles below. */
     .contact-cta {
       display: inline-block;
       font-size: 3.5vw;
       letter-spacing: -1px;
-      color: var(--bg);
-      background: var(--text);
-      padding: 0.28em 0.6em 0.32em;
-      border-radius: 4px;
+      color: var(--text);
+      border-bottom: 1.5px solid var(--text);
+      padding-bottom: 3px;
       transition: opacity 0.2s;
       align-self: flex-start;
     }
 
     .contact-cta:hover {
-      opacity: 0.8;
+      opacity: 0.6;
+    }
+
+    .contact-sub {
+      font-size: 1.4vw;
+      color: var(--muted);
+      letter-spacing: 0;
+      margin-top: -6px;
     }
 
     .contact-email-line {
       font-size: 1.6vw;
       color: var(--muted);
       letter-spacing: -0.2px;
+      margin-top: 8px;
     }
 
     .contact-email-line a {
@@ -329,6 +346,25 @@
 
     .contact-email-line a:hover {
       border-color: var(--text);
+    }
+
+    /* ── Contact section subtle distinction ── */
+    /* Revert: remove this rule to make Contact look identical to other sections */
+    #s-contact .section-trigger span:first-child::after {
+      content: ' ↗';
+      font-size: 0.55em;
+      opacity: 0.45;
+      vertical-align: super;
+    }
+
+    /* ── About process label ── */
+    .about-process-label {
+      font-size: 1.3vw;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 52px;
+      margin-bottom: 16px;
     }
 
     /* ── Footer ── */
@@ -489,8 +525,10 @@
         gap: 20px;
       }
 
-      .contact-cta       { font-size: 7vw; }
+      .contact-cta        { font-size: 7vw; }
+      .contact-sub        { font-size: 3.2vw; margin-top: -2px; }
       .contact-email-line { font-size: 3.8vw; }
+      .about-process-label { font-size: 2.8vw; }
       .content-text { font-size: 4.5vw; }
       footer        { font-size: 3vw; }
 
@@ -560,6 +598,7 @@
             <br><br>
             You won't be passed between account managers or junior staff. Every piece of work — from the initial consultation through to the final strategy documents — comes directly from me. I deliver the thinking, the research, and the plan. You and your team handle the execution, with my support along the way.
           </div>
+          <div class="about-process-label">The process</div>
           <div class="about-steps">
             <div>
               <div class="about-step-num">01</div>
@@ -571,7 +610,7 @@
             </div>
             <div>
               <div class="about-step-num">03</div>
-              <div class="about-step-label">90-day support</div>
+              <div class="about-step-label">30-day support</div>
             </div>
           </div>
         </div>
@@ -588,13 +627,14 @@
         <div class="section-content">
           <div class="contact-links">
             <a class="contact-cta" href="YOUR_TYPEFORM_URL" target="_blank" rel="noopener">Work with me →</a>
+            <span class="contact-sub">3 min questionnaire — I'll be in touch within 48 hours</span>
             <span class="contact-email-line">or email <a href="mailto:hello@mohamedismail.co">hello@mohamedismail.co</a></span>
           </div>
         </div>
       </div>
     </div>
 
-    <footer>© 2026 Mohamed Ismail</footer>
+    <!-- footer removed — to restore: <footer>© 2026 Mohamed Ismail</footer> -->
 
   </div>
 
@@ -689,7 +729,7 @@
       // Dim everything except this section
       const dimEls = [...document.querySelectorAll('header, footer, .section')];
       dimEls.forEach(el => {
-        el.style.opacity = (el === section) ? '1' : '0.2';
+        el.style.opacity = (el === section) ? '1' : '0.35'; /* revert: was 0.2 — too dark */
       });
 
       // Always scroll section header to top so content expands into view
