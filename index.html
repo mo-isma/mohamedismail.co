@@ -332,40 +332,6 @@
       margin-top: -6px;
     }
 
-    /* ── Availability indicator ── */
-    .availability {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-
-    .avail-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .avail-dot.available {
-      background: #4caf72;
-      animation: pulse 2.4s ease-in-out infinite;
-    }
-
-    .avail-dot.away {
-      background: #c8943a;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.45; transform: scale(0.8); }
-    }
-
-    .avail-label {
-      font-size: 1.5vw;
-      letter-spacing: 0;
-      color: var(--muted);
-    }
 
     .contact-email-line {
       font-size: 1.6vw;
@@ -556,7 +522,6 @@
         gap: 20px;
       }
 
-      .avail-label        { font-size: 3.2vw; }
       .contact-cta        { font-size: 7vw; }
       .contact-sub        { font-size: 3.2vw; margin-top: -2px; }
       .contact-email-line { font-size: 3.8vw; }
@@ -658,10 +623,6 @@
       <div class="section-body" id="body-contact">
         <div class="section-content">
           <div class="contact-links">
-            <div class="availability" id="availability-indicator">
-              <span class="avail-dot" id="avail-dot"></span>
-              <span class="avail-label" id="avail-label"></span>
-            </div>
             <a class="contact-cta" href="YOUR_TYPEFORM_URL" target="_blank" rel="noopener">Work with me →</a>
             <span class="contact-sub">3 min questionnaire</span>
             <span class="contact-email-line">or email <a href="mailto:hello@mohamedismail.co">hello@mohamedismail.co</a></span>
@@ -694,24 +655,6 @@
       customCursor:      false, //  5 — crosshair cursor on section hover  (revert: set true)
       reverseHover:      true,  //  6 — others dim on section hover        (revert: set false)
     };
-
-    // ── Availability ──────────────────────────────────────────────
-    // true  = taking on new projects (green pulsing dot)
-    // false = away (amber dot, no pulse)
-    const AVAILABLE = true;
-
-    (function() {
-      const dot   = document.getElementById('avail-dot');
-      const label = document.getElementById('avail-label');
-      if (!dot || !label) return;
-      if (AVAILABLE) {
-        dot.classList.add('available');
-        label.textContent = 'Available for new projects';
-      } else {
-        dot.classList.add('away');
-        label.textContent = 'Currently away';
-      }
-    })();
 
     // ── Theme ─────────────────────────────────────────────────────
     const btn  = document.getElementById('theme-toggle');
