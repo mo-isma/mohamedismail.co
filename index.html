@@ -113,6 +113,11 @@
       margin-bottom: 80px;
     }
 
+    .header-name {
+      display: block;
+      white-space: nowrap;
+    }
+
     .header-role {
       color: var(--muted);
     }
@@ -770,7 +775,7 @@
     if (FEATURES.textScramble) {
       const el = document.querySelector('.header-name');
       const original = el.textContent;
-      const pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+      const pool = 'abcdefghijklmnopqrstuvwxyz';
       const totalFrames = 22;
       let frame = 0;
 
