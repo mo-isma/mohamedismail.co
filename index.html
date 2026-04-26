@@ -332,6 +332,13 @@
       margin-top: -6px;
     }
 
+    .contact-away {
+      font-size: 1.6vw;
+      color: var(--muted);
+      letter-spacing: -0.2px;
+      display: none; /* shown via JS when AVAILABLE = false */
+    }
+
     .contact-email-line {
       font-size: 1.6vw;
       color: var(--muted);
@@ -521,6 +528,7 @@
         gap: 20px;
       }
 
+      .contact-away       { font-size: 3.5vw; }
       .contact-cta        { font-size: 7vw; }
       .contact-sub        { font-size: 3.2vw; margin-top: -2px; }
       .contact-email-line { font-size: 3.8vw; }
@@ -622,8 +630,9 @@
       <div class="section-body" id="body-contact">
         <div class="section-content">
           <div class="contact-links">
+            <span class="contact-away" id="contact-away">Currently away — I'll be in touch on my return.</span>
             <a class="contact-cta" href="YOUR_TYPEFORM_URL" target="_blank" rel="noopener">Work with me →</a>
-            <span class="contact-sub">3 min questionnaire — I'll be in touch within 48 hours</span>
+            <span class="contact-sub">3 min questionnaire</span>
             <span class="contact-email-line">or email <a href="mailto:hello@mohamedismail.co">hello@mohamedismail.co</a></span>
           </div>
         </div>
@@ -654,6 +663,16 @@
       customCursor:      false, //  5 — crosshair cursor on section hover  (revert: set true)
       reverseHover:      true,  //  6 — others dim on section hover        (revert: set false)
     };
+
+    // ── Availability ──────────────────────────────────────────────
+    // Set to false when you're away — shows the "Currently away" message
+    // in the Contact section and hides the "Work with me" CTA.
+    const AVAILABLE = true;
+
+    if (!AVAILABLE) {
+      const awayMsg = document.getElementById('contact-away');
+      if (awayMsg) awayMsg.style.display = 'block';
+    }
 
     // ── Theme ─────────────────────────────────────────────────────
     const btn  = document.getElementById('theme-toggle');
