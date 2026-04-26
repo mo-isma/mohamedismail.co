@@ -145,14 +145,6 @@
       cursor: crosshair;
     }
 
-    /* ── 6: Reverse hover — hovered section full, others dim ── */
-    html.feature-reverse-hover .wrapper:not(:has(.section.open)):hover .section {
-      opacity: 0.4;
-      transition: opacity 0.3s ease;
-    }
-    html.feature-reverse-hover .wrapper:not(:has(.section.open)) .section:hover {
-      opacity: 1;
-    }
 
     /* ── Section focus dim ── */
     header, footer, .section {
@@ -659,7 +651,7 @@
       magneticLinks:     false, //  H — contact links pull toward cursor
       ambientGradient:   false, //  J — slow warm glow drifts across background
       numberTick:        true,  //  A — service numbers count up on open
-      customCursor:      true,  //  5 — crosshair cursor on section hover  (revert: set false)
+      customCursor:      false, //  5 — crosshair cursor on section hover  (revert: set true)
       reverseHover:      true,  //  6 — others dim on section hover        (revert: set false)
     };
 
@@ -811,7 +803,21 @@
     if (FEATURES.customCursor) root.classList.add('feature-custom-cursor');
 
     // ── 6: Reverse hover ─────────────────────────────────────────
-    if (FEATURES.reverseHover) root.classList.add('feature-reverse-hover');
+    // When hovering a section, others dim. Resets cleanly on mouseleave.
+    if (FEATURES.reverseHover) {
+      document.querySelectorAll('.section').forEach(section => {
+        section.addEventListener('mouseenter', () => {
+          if (document.querySelector('.section.open')) return;
+          document.querySelectorAll('.section').forEach(s => {
+            s.style.opacity = s === section ? '1' : '0.35';
+          });
+        });
+        section.addEventListener('mouseleave', () => {
+          if (document.querySelector('.section.open')) return;
+          document.querySelectorAll('.section').forEach(s => s.style.opacity = '');
+        });
+      });
+    }
 
     // ══════════════════════════════════════════════════════════════
     // #4 — CURSOR BLOB
