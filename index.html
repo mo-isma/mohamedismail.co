@@ -770,9 +770,14 @@
     if (FEATURES.textScramble) {
       const el = document.querySelector('.header-name');
       const original = el.textContent;
-      const pool = 'abcdefghijklmnopqrstuvwxyz';
+      const pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
       const totalFrames = 22;
       let frame = 0;
+
+      // Lock width to original so wide scramble chars can't cause overflow
+      el.style.display = 'inline-block';
+      el.style.width    = el.offsetWidth + 'px';
+      el.style.overflow = 'hidden';
 
       const tick = setInterval(() => {
         frame++;
@@ -785,6 +790,9 @@
         if (frame >= totalFrames) {
           clearInterval(tick);
           el.textContent = original;
+          el.style.display = '';
+          el.style.width    = '';
+          el.style.overflow = '';
         }
       }, 38);
     }
